@@ -1,5 +1,12 @@
 {
     "productName": "angularElectron",
+    "publish": [{
+        "provider": "github",
+        "owner": "thamizh-qwerty",
+        "repo": "angular-electron",
+        "vPrefixedTagName": true,
+        "token": "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"
+    }],
     "asar": false,
     "directories": {
         "output": "release/"
@@ -35,7 +42,10 @@
         "deleteAppDataOnUninstall": true
     },
     "linux": {
-        "artifactName": "tmtzhcr.setup.${version}.${ext}",
+        "publish": [
+            "github"
+        ],
+        "artifactName": "tmtzhcreator1.setup.${version}.${ext}",
         "icon": "src/assets/icons",
         "target": [
             "deb"
