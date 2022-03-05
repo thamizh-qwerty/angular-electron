@@ -25,7 +25,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
     - name: Cache node modules
       uses: actions/cache@v2
       env:
@@ -42,6 +41,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        
+    - name: Run a one-line script
+      run: export GH_TOKEN="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"
+    
     - name: Install Dependencies
       run: npm i
     - name: Check lint
