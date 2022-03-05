@@ -3,9 +3,7 @@
     "publish": [{
         "provider": "github",
         "owner": "thamizh-qwerty",
-        "repo": "angular-electron",
-        "vPrefixedTagName": true,
-        "token": "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"
+        "repo": "angular-electron"
     }],
     "asar": false,
     "directories": {
