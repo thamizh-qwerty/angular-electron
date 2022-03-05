@@ -41,13 +41,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
         
-    - name: Run a one-line script
-      run: export GH_TOKEN="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"
-    
     - name: Install Dependencies
       run: npm i
     - name: Check lint
       run: npm run lint
     - name: Build the app
       run: npm run electron:build
+          
