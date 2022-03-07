@@ -39,12 +39,11 @@ jobs:
           ${{ runner.os }}-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
+      env:
+          GITHUB_TOKEN: ${{ github.token }}
       with:
         node-version: ${{ matrix.node-version }}
-              
-    - name: Run a one-line script
-      run: export GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
-        
+                  
     - name: Install Dependencies
       run: npm i
     - name: Check lint
