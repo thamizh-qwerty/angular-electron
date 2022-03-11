@@ -24,6 +24,9 @@
         ]
     }],
     "win": {
+      "publish": [
+            "github"
+        ],
         "artifactName": "tmtzhcr.setup.${version}.${ext}",
         "icon": "src/assets/icons",
         "target": [
