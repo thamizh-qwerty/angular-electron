@@ -27,7 +27,7 @@ jobs:
         node-version: [16.x]
 
     # The type of runner that the job will run on
-    runs-on: ubuntu-18.04
+    runs-on: [windows-latest, ubuntu-latest]
 
     steps:
 
