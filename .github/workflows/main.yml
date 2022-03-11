@@ -9,9 +9,14 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  
+  
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -39,11 +44,14 @@ jobs:
           ${{ runner.os }}-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
-      env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+ 
       with:
         node-version: ${{ matrix.node-version }}
                   
+    - name: DISPLAY SECRETS CONSOLE - ECHO
+      run: echo ${{ secrets.GH_TOKEN }}
+    - name: Display env value
+      run: echo "$GH_TOKEN"
     - name: Install Dependencies
       run: npm i
     - name: Check lint
