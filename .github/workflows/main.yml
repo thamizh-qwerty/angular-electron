@@ -30,10 +30,7 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    
-    - shell: bash
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
     
     - uses: actions/checkout@v2
     - name: Cache node modules
@@ -53,11 +50,7 @@ jobs:
  
       with:
         node-version: ${{ matrix.node-version }}
-   
- 
-
-      
-                  
+                
     - name: DISPLAY SECRETS CONSOLE - ECHO
       run: echo ${{ secrets.GH_TOKEN }}
     - name: Display env value
