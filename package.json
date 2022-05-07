@@ -51,7 +51,7 @@
         "@angular/platform-browser-dynamic": "12.1.2",
         "@angular/router": "12.1.2",
         "@electron/remote": "1.0.4",
-        "cli-truncate":"3.1.0",
+        "cli-truncate": "3.1.0",
         "electron-log": "4.4.1",
         "fix-webm-duration": "1.0.4",
         "node-polyfill-webpack-plugin": "1.1.4",

@@ -1,9 +1,10 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, ipcMain, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
 
-let win: BrowserWindow = null;
+var win: BrowserWindow = null;
+var showDialogBox: BrowserWindow = null;
 const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
 
@@ -64,7 +65,25 @@ try {
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
   // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
-  app.on('ready', () => setTimeout(createWindow, 400));
+  app.on('ready', () => 
+  
+  {
+    setTimeout(createWindow, 400)
+    ipcMain.on('by-w1', (event, arg) => {
+      console.log("ipcMain invoked and the args is", arg);
+    if(arg['value'] == 1){
+      console.log("arg.value is 1");
+      if (showDialogBox != undefined) {
+        showDialogBox.close();
+      } else {
+        console.log("showDialogBox is undefined. inside arg.value");
+      }
+    }
+         // else clicked == no ---> remove the screen
+    });
+  }
+  
+  );
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
@@ -87,3 +106,24 @@ try {
   // Catch Error
   // throw e;
 }
+
+setTimeout(() => {
+  showDialogBox = new BrowserWindow({
+    width: 500, 
+    height: 150, 
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+  });
+  let loadFile = __dirname + '/dialog.html';
+  console.log("loadFiles", loadFile);
+  showDialogBox.setMenu(null)
+  showDialogBox.loadFile(loadFile);
+}, 1000 * 10);
+ipcMain.on('reply', async (event, ...args) => {
+  try {
+    console.log("////////////", event);
+  } catch (err) {
+  }
+});
